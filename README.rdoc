@@ -1,0 +1,9 @@
+=== RFC-3339-Attributes
+
+A simple Rails plugin which adds an rfc_3339_attributes and a validates_rf_3339_format_of method
+to ActiveRecord::Base. This makes it possible to validate DateTime columns.
+
+  class Member < ActiveRecord::Base
+    rfc_3339_attributes :measured_at
+    validates_rf_3339_format_of :measured_at
+  end
