@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rfc-3339-attributes}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Manfred Stienstra"]
-  s.date = %q{2010-07-05}
+  s.date = %q{2010-07-20}
   s.description = %q{A tiny Rails plugin to allow validation on RFC-3339 datetime attributes.}
   s.email = %q{manfred@fngtps.com}
   s.extra_rdoc_files = [
@@ -17,12 +17,14 @@ Gem::Specification.new do |s|
      "README.rdoc"
   ]
   s.files = [
-    "LICENSE",
+    ".gitignore",
+     "LICENSE",
      "README.rdoc",
      "Rakefile",
      "VERSION.yml",
      "lib/active_record/rfc_3339_attributes.rb",
      "rails/init.rb",
+     "rfc-3339-attributes.gemspec",
      "test/rfc_3339_attributes_test.rb",
      "test/test_helper.rb"
   ]
