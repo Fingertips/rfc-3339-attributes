@@ -24,12 +24,23 @@ class RFC3339AttributesValidationTest < ActiveSupport::TestCase
     end
   end
   
+  test "accepts valid timestamps when read from the database" do
+    @member.write_attribute(:measured_at, Time.now)
+    @member.valid?
+    assert @member.errors.on(:measured_at).blank?
+  end
+  
   test "rejects invalid timestamps" do
     %w{
       invalid
     }.each do |timestamp|
       assert_invalid_timestamp(timestamp)
     end
+  end
+  
+  test "rejects invalid timestamps when read from the database" do
+    @member.valid?
+    assert !@member.errors.on(:measured_at).blank?
   end
   
   private

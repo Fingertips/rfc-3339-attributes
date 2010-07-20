@@ -28,12 +28,12 @@ module ActiveRecord
       
       send(validation_method(configuration[:on] || :save), configuration) do |record|
         attr_names.each do |attr_name|
-          value_before_type_cast = record.send(:instance_variable_get, "@#{attr_name}_before_type_cast")
-          next if value_before_type_cast.acts_like?(:time)
-          if value_before_type_cast.blank? and !configuration[:allow_blank]
-            record.errors.add(attr_name, :invalid, :default => "can't be blank", :value => value_before_type_cast)
-          elsif value_before_type_cast.to_s !~ configuration[:with]
-            record.errors.add(attr_name, :invalid, :default => configuration[:message], :value => value_before_type_cast)
+          value = record.send(:instance_variable_get, "@#{attr_name}_before_type_cast") || record.send(attr_name)
+          next if value.acts_like?(:time)
+          if value.blank? and !configuration[:allow_blank]
+            record.errors.add(attr_name, :invalid, :default => "can't be blank", :value => value)
+          elsif value.to_s !~ configuration[:with]
+            record.errors.add(attr_name, :invalid, :default => configuration[:message], :value => value)
           end
         end
       end
